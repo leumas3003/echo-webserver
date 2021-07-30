@@ -1,5 +1,5 @@
-##Multi stage docker
-FROM golang:1.16-alpine AS builder
+##File to create a docker image
+FROM golang:1.16-alpine
 
 ENV GO111MODULE=on
 
@@ -18,18 +18,8 @@ COPY . .
 # Build the Go app
 RUN go build -o main .
 
-######## Start a new stage from scratch
-FROM alpine:latest  
-
-RUN apk --no-cache add ca-certificates
-
-WORKDIR /root/
-
-# Copy the Pre-built binary file from the previous stage
-COPY --from=builder /app/main .
-
-# Expose port 8080 to the outside world
+# This container exposes port 8080 to the outside world
 EXPOSE 8080
 
-# Command to run the executable
-CMD ["./main"] 
+# Run the binary program produced by `go install`
+CMD ["./main"]

@@ -9,6 +9,47 @@ Golang WebServer using echo
 | JWT | https://github.com/golang-jwt/jwt |
 | Swagger | https://github.com/swaggo/echo-swagger |
 
+
+## Docker 
+
+### Image
+- Building the image   
+```
+docker build -t <IMAGE_NAME> .
+```
+
+- Running the Docker image
+```
+docker run -d -p OUTPUT_PORT:3001 <IMAGE_NAME>
+```
+- Findinf running containers
+```
+docker container ls
+```
+- Stopping the container
+```
+docker container stop <container_id>
+```
+
+### Multi stage image
+- Building the image   
+```
+docker build -t <IMAGE_NAME> -f Dockerfile.multistage .
+```
+
+- Running the Docker image
+```
+docker run -d -p OUTPUT_PORT:3001 <IMAGE_NAME>
+```
+- Findinf running containers
+```
+docker container ls
+```
+- Stopping the container
+```
+docker container stop <container_id>
+```
+
 ## License
 
 MIT License
