@@ -5,7 +5,6 @@ import (
 
 	"github.com/labstack/echo/v4"
 
-	"github.com/leumas3003/echo-webserver/docs"
 	"github.com/leumas3003/echo-webserver/router"
 )
 
@@ -27,16 +26,5 @@ func StartServer() *echo.Echo {
 	e := router.New()
 	//Starting the webserver
 	e.Start(":3001")
-	confSwagger()
 	return e
-}
-
-func confSwagger() {
-	// programmatically set swagger info
-	docs.SwaggerInfo.Title = "Animals API"
-	docs.SwaggerInfo.Description = "Webserver using echo. Basic Auth, JWT, Log,."
-	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Host = "localhost:3001"
-	docs.SwaggerInfo.BasePath = "/"
-	docs.SwaggerInfo.Schemes = []string{"http", "https"}
 }
